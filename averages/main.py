@@ -9,17 +9,30 @@ import re
 import time
 import numpy as np
 import matplotlib.pyplot as plt
+import json
 
 from failure import mises_stress
-from averages import get_header, match_lines, calculate_averages,min_max_value,print_averages
+from averages import (
+    get_header,
+    match_lines,
+    calculate_averages,
+    min_max_value,
+    print_averages,
+)
 
 
 if __name__ == "__main__":
 
     start = time.time()
 
-    file_name = "data/static-analysis.dat"
-    file = open(file_name, "r")
+    with open("averages/config.json") as file:
+        config = json.load(file)
+    
+    
+    with open(config['file name']) as f:
+        file = f.readlines()
+    
+    
     header = re.compile(" (.+)for .*set\\s(\\S+) and time  (.+)")
 
     data = match_lines(header, file)

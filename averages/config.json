@@ -1,6 +1,8 @@
 {
-    "element_averages" : ["stresses", "strains"],
+    "element averages" : ["stresses", "strains"],
 
-    "point_averages" : ["forces", "displacements"]
+    "point averages" : ["forces", "displacements"],
+
+    "file name": "data/static-analysis.dat"
 
 }
