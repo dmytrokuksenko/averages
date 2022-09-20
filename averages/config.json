@@ -1,0 +1,6 @@
+{
+    "element_averages" : ["stresses", "strains"],
+
+    "point_averages" : ["forces", "displacements"]
+
+}
