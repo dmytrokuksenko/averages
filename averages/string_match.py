@@ -5,14 +5,15 @@ Author: Dmytro Kuksenko
 Date: Sept 14, 2022
 
 """
-
 import numpy as np
 
 # The idea behind the infer_spaces function implementation is from [1]
 # [1] https://stackoverflow.com/questions/8870261/how-to-split-text-without-spaces-into-list-of-words
 
 words = open("data\dictionary.dat").read().split()
-wordcost = dict((k, np.log((i + 1) * np.log(len(words)))) for i, k in enumerate(words))
+wordcost = dict(
+    (k, np.log((i + 1) * np.log(len(words)))) for i, k in enumerate(words)
+)
 maxword = max(len(x) for x in words)
 
 
@@ -26,7 +27,8 @@ def infer_spaces(s):
     def best_match(i):
         candidates = enumerate(reversed(cost[max(0, i - maxword) : i]))
         return min(
-            (c + wordcost.get(s[i - k - 1 : i], 9e999), k + 1) for k, c in candidates
+            (c + wordcost.get(s[i - k - 1 : i], 9e999), k + 1)
+            for k, c in candidates
         )
 
     # Build the cost array.

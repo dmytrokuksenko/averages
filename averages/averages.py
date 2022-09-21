@@ -4,10 +4,9 @@ A collection of supplemental functions for processing the DAT file.
 Author: Dmytro Kuksenko
 Date: Sept 19, 2022
 """
-
 import re
+
 import numpy as np
-import json
 
 
 def get_header(header, line):
@@ -41,9 +40,10 @@ def calculate_averages(data, name):
 
     print(f"\nThe components of {name}...")
 
-    if name in  ["stresses", "strains"]:
+    if name in ["stresses", "strains"]:
         averages = [
-            np.sum(data[:, i] / len(data[:, i])) for i in range(2, data.shape[1])
+            np.sum(data[:, i] / len(data[:, i]))
+            for i in range(2, data.shape[1])
         ]
 
     elif name == "volume":
@@ -51,7 +51,8 @@ def calculate_averages(data, name):
 
     else:
         averages = [
-            np.sum(data[:, i] / len(data[:, i])) for i in range(1, data.shape[1])
+            np.sum(data[:, i] / len(data[:, i]))
+            for i in range(1, data.shape[1])
         ]
 
     return np.array(averages)

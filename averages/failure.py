@@ -6,14 +6,18 @@ Date: Sept 14, 2022
 """
 import numpy as np
 
+
 def tsai_wu():
     pass
+
 
 def max_stress():
     pass
 
+
 def max_strain():
     pass
+
 
 def mises_stress(t):
     mises = np.sqrt(
